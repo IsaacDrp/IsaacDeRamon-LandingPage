@@ -8,10 +8,14 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://synectura.com', // Actualizado a tu dominio real
   integrations: [mdx(), sitemap()],
 
   vite: {
     plugins: [tailwindcss()],
+    // Aquí autorizamos los dominios para el modo preview
+    preview: {
+      allowedHosts: ['synectura.com', 'www.synectura.com']
+    }
   },
 });
