@@ -1,0 +1,27 @@
+---
+// 1. Usamos el Layout que sí tienes en src/layouts
+import Layout from '../layouts/Layout.astro';
+
+// 2. Importamos los componentes que aparecen en tu "tree"
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Stack from '../components/Stack.astro';
+import Experience from '../components/Experience.astro';
+
+// NOTA: En tu tree, 'Projects' aparece como una carpeta, no un archivo .astro.
+// Por ahora no lo importo para evitar errores hasta que creemos el archivo dentro.
+// import Projects from '../components/Projects.astro'; 
+---
+
+<Layout title="Isaac Abraham | DevOps & Full Stack Portfolio">
+	<main>
+		<Hero />
+		
+		<About />
+
+		<Stack />
+
+		<Experience />
+
+		</main>
+</Layout>

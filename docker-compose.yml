@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  portfolio:
+    build: .
+    container_name: isaac-portfolio
+    restart: unless-stopped
+    ports:
+      - "4321:4321" # Tu Nginx del host apuntará a localhost:4321
+    environment:
+      - HOST=0.0.0.0 # Asegura que Astro acepte conexiones externas

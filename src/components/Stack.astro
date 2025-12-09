@@ -1,0 +1,180 @@
+---
+/* Definimos los grupos de tecnologías.
+  slug: es el nombre para el icono en simpleicons.org
+  name: el nombre visible (alt text)
+*/
+const row1 = [
+  { name: "Java", slug: "openjdk" },
+  { name: "Spring Boot", slug: "springboot" },
+  { name: "Node.js", slug: "nodedotjs" },
+  { name: "PHP", slug: "php" },
+  { name: "Hibernate", slug: "hibernate" },
+  { name: "MySQL", slug: "mysql" },
+];
+
+const row2 = [
+  { name: "Arch Linux", slug: "archlinux" },
+  { name: "Ubuntu", slug: "ubuntu" },
+  { name: "Docker", slug: "docker" },
+  { name: "Nginx", slug: "nginx" },
+  { name: "gnometerminal", slug: "gnometerminal" },
+  { name: "OpenVPN", slug: "openvpn" },
+];
+
+const row3 = [
+  { name: "Angular", slug: "angular" },
+  { name: "Astro", slug: "astro" },
+  { name: "Snowflake", slug: "snowflake" },
+  { name: "Hadoop", slug: "apachehadoop" },
+  { name: "Git", slug: "git" },
+  { name: "Spark", slug: "apachespark" },
+];
+---
+
+<section id="stack" class="section" style="overflow: hidden; background: linear-gradient(to bottom, var(--bg-color), #0f1219);">
+    <div class="container" style="text-align: center; margin-bottom: 3rem;">
+        <h2 class="mono-label" style="font-size: 1.5rem;">
+            <span style="color: var(--accent)">02.</span> Tech Arsenal
+        </h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+            $ ls -la /usr/bin/skills
+        </p>
+    </div>
+
+    <div class="carousel-wrapper">
+        
+        <div class="carousel-track scroll-left">
+            {/* Duplicamos el array para crear el efecto infinito sin cortes */}
+            {[...row1, ...row1, ...row1, ...row1].map((tech) => (
+                <div class="tech-item">
+                    <div class="circle-icon">
+                        <img 
+                            src={`https://cdn.simpleicons.org/${tech.slug}/white`} 
+                            alt={tech.name} 
+                            title={tech.name}
+                        />
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        <div class="carousel-track scroll-right">
+            {[...row2, ...row2, ...row2, ...row2].map((tech) => (
+                <div class="tech-item">
+                    <div class="circle-icon border-accent">
+                        <img 
+                            src={`https://cdn.simpleicons.org/${tech.slug}/06b6d4`} 
+                            alt={tech.name} 
+                            title={tech.name}
+                        />
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        <div class="carousel-track scroll-left">
+            {[...row3, ...row3, ...row3, ...row3].map((tech) => (
+                <div class="tech-item">
+                    <div class="circle-icon">
+                        <img 
+                            src={`https://cdn.simpleicons.org/${tech.slug}/white`} 
+                            alt={tech.name} 
+                            title={tech.name}
+                        />
+                    </div>
+                </div>
+            ))}
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* Contenedor principal que oscurece los bordes para un efecto "fade" */
+    .carousel-wrapper {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        /* Máscara para desvanecer los bordes izquierdo y derecho */
+        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    /* La pista que se mueve */
+    .carousel-track {
+        display: flex;
+        gap: 3rem; /* Espacio entre iconos */
+        width: max-content;
+    }
+
+    /* Animaciones */
+    .scroll-left {
+        animation: scrollLeft 40s linear infinite;
+    }
+    
+    .scroll-right {
+        animation: scrollRight 40s linear infinite;
+    }
+
+    /* Pausar animación al pasar el mouse */
+    .carousel-wrapper:hover .carousel-track {
+        animation-play-state: paused;
+    }
+
+    /* Estilo del Item */
+    .tech-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* El círculo del icono */
+    .circle-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .circle-icon img {
+        width: 40px;
+        height: 40px;
+        opacity: 0.8;
+        transition: opacity 0.3s;
+    }
+
+    /* Variación para la fila del medio (Infra) con acento cyan */
+    .border-accent {
+        border-color: rgba(6, 182, 212, 0.3);
+    }
+
+    /* Hover Effects */
+    .circle-icon:hover {
+        transform: scale(1.1);
+        border-color: var(--accent);
+        box-shadow: 0 0 15px var(--accent-glow);
+        background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .circle-icon:hover img {
+        opacity: 1;
+    }
+
+    /* Keyframes para el movimiento infinito */
+    @keyframes scrollLeft {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    @keyframes scrollRight {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+    }
+</style>
