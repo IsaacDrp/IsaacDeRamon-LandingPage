@@ -17,4 +17,4 @@ EXPOSE 4321
 
 # Usamos 'preview' para servir la carpeta dist
 # --host es VITAL para que Docker escuche fuera de localhost
-CMD ["npm", "run", "preview", "--", "--host"]
+CMD ["npm", "run", "preview", "--", "--host", "--allowed-hosts", "all"]
