@@ -15,9 +15,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
     // Aquí autorizamos los dominios para el modo preview
     preview: {
-      server: {
       allowedHosts: ['synectura.com', 'www.synectura.com']
-    }
+    
     }
   },
 });
