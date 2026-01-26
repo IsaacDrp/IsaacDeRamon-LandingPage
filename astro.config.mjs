@@ -6,17 +6,18 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
 export default defineConfig({
-  site: 'https://synectura.com',
-  integrations: [mdx(), sitemap()],
-
-  vite: {
-    plugins: [tailwindcss()],
-    // Aquí autorizamos los dominios para el modo preview
-    preview: {
-      allowedHosts: ['synectura.com', 'www.synectura.com']
-    
-    }
+  // ...
+  server: {
+    host: '0.0.0.0', // Escucha en todas las interfaces de tu Gateway
+    allowedHosts: true
   },
+  vite: {
+    server: {
+      allowedHosts: true
+    },
+    preview: {
+      allowedHosts: true
+    }
+  }
 });
