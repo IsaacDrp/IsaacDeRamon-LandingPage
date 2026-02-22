@@ -5,7 +5,11 @@ services:
     build: .
     container_name: isaac-portfolio
     restart: unless-stopped
-    ports:
-      - "4321:4321" # Tu Nginx del host apuntará a localhost:4321
     environment:
-      - HOST=0.0.0.0 # Asegura que Astro acepte conexiones externas
+      - HOST=0.0.0.0 
+    networks:
+      - synectura-net
+
+networks:
+  synectura-net:
+    external: true
